@@ -21,26 +21,40 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffix, al_start_
     for year in range(start_year, max_year + 1):
         year_found = False
         consecutive_not_found = 0
+        consecutive_al_not_found = 0
+        al_search_active = True
 
         for number in range(1, max_number + 1):
-            urls = [f"{base_url}{year}-{str(number).zfill(2)}"]
-            if year >= al_start_year and al_suffix:
-                urls.append(f"{base_url}{year}-{str(number).zfill(2)}-{al_suffix}")
-
-            for url in urls:
-                h1_content = check_link_and_get_h1(url)
-                if h1_content:
-                    print(f"Available: {url} - {h1_content}")
-                    available_links.append((url, h1_content))
-                    consecutive_not_found = 0
-                    year_found = True
-                else:
-                    print(f"Not available or no <h1> found: {url}")
-                    consecutive_not_found += 1
+            url = f"{base_url}{year}-{str(number).zfill(2)}"
+            h1_content = check_link_and_get_h1(url)
+            if h1_content:
+                print(f"Available: {url} - {h1_content}")
+                available_links.append((url, h1_content))
+                consecutive_not_found = 0
+                year_found = True
+            else:
+                print(f"Not available or no <h1> found: {url}")
+                consecutive_not_found += 1
 
             if consecutive_not_found >= 3:
                 print(f"Skipping to next year after {consecutive_not_found} consecutive misses.")
                 break
+
+            if year >= al_start_year and al_search_active:
+                al_url = f"{base_url}{year}-{str(number).zfill(2)}-{al_suffix}"
+                al_h1_content = check_link_and_get_h1(al_url)
+                if al_h1_content:
+                    print(f"Available: {al_url} - {al_h1_content}")
+                    available_links.append((al_url, al_h1_content))
+                    consecutive_al_not_found = 0
+                    year_found = True
+                else:
+                    print(f"Not available or no <h1> found: {al_url}")
+                    consecutive_al_not_found += 1
+
+                if consecutive_al_not_found >= 3:
+                    print(f"Stopping '-{al_suffix}' search for the current year after {consecutive_al_not_found} consecutive misses.")
+                    al_search_active = False
 
         if not year_found:
             consecutive_years_not_found += 1
@@ -59,7 +73,7 @@ def save_links_to_file(links, filename):
 
 if __name__ == "__main__":
     base_url = 'https://www.it-planungsrat.de/beschluss/beschluss-'
-    start_year = 2010  # Startjahr
+    start_year = 2020  # Startjahr
     max_year = 2030  # Endjahr (falls nicht früher gestoppt)
     max_number = 100  # Maximal mögliche Nummer
     al_suffix = 'al'
