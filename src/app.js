@@ -12,9 +12,8 @@ import {
   Badge,
   Stack,
   Card,
-  CardBody,
   CardHeader,
-  CardFooter
+  Spinner
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import './App.css';
@@ -22,11 +21,15 @@ import './App.css';
 function App() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('available_links.json')
       .then(response => response.json())
-      .then(data => setData(data));
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      });
   }, []);
 
   const handleFilterChange = useCallback(
@@ -67,25 +70,29 @@ function App() {
       </VStack>
 
       <Box overflowX="auto">
-        <Stack spacing={4}>
-          {filteredData.reverse().map((item, index) => (
-            <Link href={item.url} target="_blank" rel="noopener noreferrer" colorScheme='teal' variant='outline'>
-              <Card key={index}>
-                <CardHeader>
-                  <Stack direction='row'>
-                    <Badge colorScheme='green'>{item.meeting_info.decision}</Badge>
-                    <Badge colorScheme='red'>{item.meeting_info.meeting_type}</Badge>
-                    <Badge colorScheme='purple'>{item.meeting_info.session}</Badge>
-                  </Stack>
-                  <Stat>
-                    <StatNumber>{item.headline}</StatNumber>
-                    <StatHelpText>{item.meeting_info.date}</StatHelpText>
-                  </Stat>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
-        </Stack>
+        {loading ? (
+          <Spinner size="xl" />
+        ) : (
+          <Stack spacing={4}>
+            {filteredData.reverse().map((item, index) => (
+              <Link href={item.url} target="_blank" rel="noopener noreferrer" colorScheme='teal' variant='outline' key={index}>
+                <Card>
+                  <CardHeader>
+                    <Stack direction='row'>
+                      <Badge colorScheme='green'>{item.meeting_info.decision}</Badge>
+                      <Badge colorScheme='red'>{item.meeting_info.meeting_type}</Badge>
+                      <Badge colorScheme='purple'>{item.meeting_info.session}</Badge>
+                    </Stack>
+                    <Stat>
+                      <StatNumber>{item.headline}</StatNumber>
+                      <StatHelpText>{item.meeting_info.date}</StatHelpText>
+                    </Stat>
+                  </CardHeader>
+                </Card>
+              </Link>
+            ))}
+          </Stack>
+        )}
       </Box>
     </Container>
   );
