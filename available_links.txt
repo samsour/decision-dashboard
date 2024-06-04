@@ -570,7 +570,10 @@ https://www.it-planungsrat.de/beschluss/beschluss-2021-49 - Konzept Fachkongress
 https://www.it-planungsrat.de/beschluss/beschluss-2021-50 - Fachkongress 2022
 https://www.it-planungsrat.de/beschluss/beschluss-2021-51 - AG Externe Innovatoren
 https://www.it-planungsrat.de/beschluss/beschluss-2022-01 - EVB-IT Cloud
+https://www.it-planungsrat.de/beschluss/beschluss-2022-01-al - Kosten- und Preismodell EfA-Antragsdienste
+https://www.it-planungsrat.de/beschluss/beschluss-2022-02-al - EfA-Mindestanforderungen
 https://www.it-planungsrat.de/beschluss/beschluss-2022-03 - Managementkonzept zur flächendeckenden Förderung mit föderale IT-Infrastruktur
+https://www.it-planungsrat.de/beschluss/beschluss-2022-03-al - Entscheidung über Projektanträge-Digitalisierungsbudget
 https://www.it-planungsrat.de/beschluss/beschluss-2022-04 - Zentrales Bürgerpostfach
 https://www.it-planungsrat.de/beschluss/beschluss-2022-05 - Behördennummer 115
 https://www.it-planungsrat.de/beschluss/beschluss-2022-06 - Registermodernisierung
@@ -607,31 +610,57 @@ https://www.it-planungsrat.de/beschluss/beschluss-2022-36 - Marktplatz govdigita
 https://www.it-planungsrat.de/beschluss/beschluss-2022-37 - Unternehmenskonto
 https://www.it-planungsrat.de/beschluss/beschluss-2022-38 - Behördennummer 115
 https://www.it-planungsrat.de/beschluss/beschluss-2023-01 - Änderung Gründungsbeschluss FITKO § 7 Abs. 7
+https://www.it-planungsrat.de/beschluss/beschluss-2023-01-al - Ausbau Produktmanagement
 https://www.it-planungsrat.de/beschluss/beschluss-2023-02 - Kommunalpakt
+https://www.it-planungsrat.de/beschluss/beschluss-2023-02-al - Einheitliches Logo für Online-Dienste
 https://www.it-planungsrat.de/beschluss/beschluss-2023-03 - Beschluss der Ministerpräsidentenkonferenzen
+https://www.it-planungsrat.de/beschluss/beschluss-2023-03-al - Mehrjährige Finanzplanung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-04 - Wirtschaftsplan FITKO
+https://www.it-planungsrat.de/beschluss/beschluss-2023-04-al - Projekt EfA-Parametrisierung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-05 - Selbstverständnis IT-PLR
+https://www.it-planungsrat.de/beschluss/beschluss-2023-05-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2023-06 - Gremienbereinigung
+https://www.it-planungsrat.de/beschluss/beschluss-2023-06-al - OZG-Nachnutzung & Datenschutz
 https://www.it-planungsrat.de/beschluss/beschluss-2023-07 - EfA-Support und Betrieb
+https://www.it-planungsrat.de/beschluss/beschluss-2023-07-al - Betrieb von EfA-Services
 https://www.it-planungsrat.de/beschluss/beschluss-2023-08 - Evaluierung Rahmenvereinbarung FITKO und KoSIT
+https://www.it-planungsrat.de/beschluss/beschluss-2023-08-al - Standardisierung im Prozessmanagement
 https://www.it-planungsrat.de/beschluss/beschluss-2023-09 - Verbindungsnetz
+https://www.it-planungsrat.de/beschluss/beschluss-2023-09-al - Verwaltungscloud (DVS) Architekurboard
 https://www.it-planungsrat.de/beschluss/beschluss-2023-10 - xdomea Verwaltung
+https://www.it-planungsrat.de/beschluss/beschluss-2023-10-al - Verwaltungscloud (DVS) Koordinierungsstelle
 https://www.it-planungsrat.de/beschluss/beschluss-2023-11 - Behördennummer 115
+https://www.it-planungsrat.de/beschluss/beschluss-2023-11-al - Verwaltungscloud (DVS) Umsetzungsprojekt
 https://www.it-planungsrat.de/beschluss/beschluss-2023-12 - GovData
+https://www.it-planungsrat.de/beschluss/beschluss-2023-12-al - Nutzungshäufigkeit Verwaltungsleistungen
 https://www.it-planungsrat.de/beschluss/beschluss-2023-13 - OZG vergaberechtliches Modell
+https://www.it-planungsrat.de/beschluss/beschluss-2023-13-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2023-14 - Jahresbericht IT-PLR & FITKO
+https://www.it-planungsrat.de/beschluss/beschluss-2023-14-al - Workshop Rollout EfA-Leistungen
 https://www.it-planungsrat.de/beschluss/beschluss-2023-15 - Umsetzung Beschlüsse der Klausurtagung
+https://www.it-planungsrat.de/beschluss/beschluss-2023-15-al - Marktplatz - Nachnutzung digitaler Leistungen
 https://www.it-planungsrat.de/beschluss/beschluss-2023-16 - Digitale Infrastruktur
+https://www.it-planungsrat.de/beschluss/beschluss-2023-16-al - Finanzierung des dauerhaften Betriebs von EfA-Lösungen
 https://www.it-planungsrat.de/beschluss/beschluss-2023-17 - DVC - Architekturboard
+https://www.it-planungsrat.de/beschluss/beschluss-2023-17-al - AG Informationssicherheit - Vorsitzregelung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-18 - DVC - Koordinierungsstelle
+https://www.it-planungsrat.de/beschluss/beschluss-2023-18-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2023-19 - DVC - Umsetzungsprojekt
+https://www.it-planungsrat.de/beschluss/beschluss-2023-19-al - Umsetzung DIN 91379 KONSENS-Verbund
 https://www.it-planungsrat.de/beschluss/beschluss-2023-20 - Kommunalpakt
+https://www.it-planungsrat.de/beschluss/beschluss-2023-20-al - Governance Registermodernisierung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-21 - Nutzungshäufigkeit Verwaltungsleistungen
+https://www.it-planungsrat.de/beschluss/beschluss-2023-21-al - Hochwertige Datensätze, DVO (EU) 2023/138
 https://www.it-planungsrat.de/beschluss/beschluss-2023-22 - Registermodernisierung
+https://www.it-planungsrat.de/beschluss/beschluss-2023-22-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2023-23 - Leitlinie Informationssicherheit
+https://www.it-planungsrat.de/beschluss/beschluss-2023-23-al - Gemeinsame EfA-Finanzierung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-24 - Wirtschaftsplan 2024
+https://www.it-planungsrat.de/beschluss/beschluss-2023-24-al - EfA-Nachnutzung -Informationssicherheit beim Betrieb von EfA-Leistungen
 https://www.it-planungsrat.de/beschluss/beschluss-2023-25 - IT-Staatsvertrag
+https://www.it-planungsrat.de/beschluss/beschluss-2023-25-al - Ausbau Produktmanagement
 https://www.it-planungsrat.de/beschluss/beschluss-2023-26 - OSiP Euro2024
+https://www.it-planungsrat.de/beschluss/beschluss-2023-26-al - Kompetenzturbo-Digitalisierung
 https://www.it-planungsrat.de/beschluss/beschluss-2023-27 - Unternehmenskonto
 https://www.it-planungsrat.de/beschluss/beschluss-2023-28 - Wissensmanagement 115
 https://www.it-planungsrat.de/beschluss/beschluss-2023-29 - Zentrales Bürgerpostfach
@@ -660,13 +689,21 @@ https://www.it-planungsrat.de/beschluss/beschluss-2023-51 - XBezahldienste
 https://www.it-planungsrat.de/beschluss/beschluss-2023-52 - XStandards Einkauf
 https://www.it-planungsrat.de/beschluss/beschluss-2023-53 - AG Informationssicherheit
 https://www.it-planungsrat.de/beschluss/beschluss-2024-01 - Fachpolitische Sprecher
+https://www.it-planungsrat.de/beschluss/beschluss-2024-01-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2024-02 - Föderale Digitalstrategie
+https://www.it-planungsrat.de/beschluss/beschluss-2024-02-al - Einheitliches Unternehmenskonto
 https://www.it-planungsrat.de/beschluss/beschluss-2024-03 - Wirtschaftsplan
+https://www.it-planungsrat.de/beschluss/beschluss-2024-03-al - xZuFi 2.3 und EfA-Parametrisierung
 https://www.it-planungsrat.de/beschluss/beschluss-2024-04 - Digitale Dachmarke
+https://www.it-planungsrat.de/beschluss/beschluss-2024-04-al - Unternehmenskonto
 https://www.it-planungsrat.de/beschluss/beschluss-2024-05 - Standardisierungsboard
+https://www.it-planungsrat.de/beschluss/beschluss-2024-05-al - Einrichtung Projektgruppe "Semantische Interoperabilität"
 https://www.it-planungsrat.de/beschluss/beschluss-2024-06 - Nutzungshäufigkeit Verwaltungsleistungen
+https://www.it-planungsrat.de/beschluss/beschluss-2024-06-al - Föderale Digitalisierungsprojekte
 https://www.it-planungsrat.de/beschluss/beschluss-2024-07 - E-Rechnung
+https://www.it-planungsrat.de/beschluss/beschluss-2024-07-al - Gemeinsame EfA-Finanzierung
 https://www.it-planungsrat.de/beschluss/beschluss-2024-08 - Mehrjährige Finanzplanung
+https://www.it-planungsrat.de/beschluss/beschluss-2024-08-al - Nutzung eines Online-Dienstes durch die IHK FOSA
 https://www.it-planungsrat.de/beschluss/beschluss-2024-09 - Berichtspflichten IT-Planungsrat
 https://www.it-planungsrat.de/beschluss/beschluss-2024-10 - AG Verbindungsnetz
 https://www.it-planungsrat.de/beschluss/beschluss-2024-11 - Digitale Souveränität
