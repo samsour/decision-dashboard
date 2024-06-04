@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Crawler</title>
+</head>
+<body>
+    <h1>Verfügbare Links</h1>
+    <ul id="linkList"></ul>
+
+    <script>
+        async function checkLink(url) {
+            try {
+                let response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch (error) {
+                console.error(`Fehler beim Abrufen von ${url}:`, error);
+                return false;
+            }
+        }
+
+        async function crawlLinks() {
+            const baseURL = 'https://www.it-planungsrat.de/beschluss/beschluss-';
+            const years = [2020, 2021, 2022, 2023, 2024]; // Beispieljahre, kann erweitert werden
+            const numbers = Array.from({ length: 60 }, (_, i) => i + 1); // Beispielnummern 1-100
+
+            const linkList = document.getElementById('linkList');
+            for (let year of years) {
+                for (let number of numbers) {
+                    let url = `${baseURL}${year}-${number}`;
+                    if (await checkLink(url)) {
+                        let listItem = document.createElement('li');
+                        let link = document.createElement('a');
+                        link.href = url;
+                        link.textContent = url;
+                        listItem.appendChild(link);
+                        linkList.appendChild(listItem);
+                    }
+                }
+            }
+        }
+
+        crawlLinks();
+    </script>
+</body>
+</html>
