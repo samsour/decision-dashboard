@@ -92,3 +92,4 @@ if __name__ == "__main__":
     save_links_to_file(available_links, 'available_links.json')
 
     print("Done. Available links with <h1> content are saved in 'available_links.json'")
+scraper
