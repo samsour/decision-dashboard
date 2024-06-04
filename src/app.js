@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Box,
-  Button,
   Container,
   Heading,
   Input,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
   VStack,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+    Stat,
+    Button,
+  StatNumber,
+  StatHelpText,
+Badge,
+  Stack
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import './App.css';
@@ -46,12 +50,6 @@ function App() {
     });
   }, [data, filter]);
 
-  const showArticle = (articleHtml) => {
-    const articleWindow = window.open('', '_blank');
-    articleWindow.document.write(articleHtml);
-    articleWindow.document.close();
-  };
-
   return (
     <Container maxW="container.xl" py={4}>
       <Heading as="h1" mb={4}>Verfügbare Beschlüsse</Heading>
@@ -67,33 +65,39 @@ function App() {
           />
         </Box>
       </VStack>
+
+
       <Box overflowX="auto">
-        <Table variant="striped" colorScheme="teal">
-          <Thead>
-            <Tr>
-              <Th>Link</Th>
-              <Th>Headline</Th>
-              <Th>Meeting Type</Th>
-              <Th>Date</Th>
-              <Th>Session</Th>
-              <Th>Decision</Th>
-              <Th>Article</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {filteredData.reverse().map((item, index) => (
-              <Tr key={index}>
-                <Td><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></Td>
-                <Td>{item.headline}</Td>
-                <Td>{item.meeting_info.meeting_type || ''}</Td>
-                <Td>{item.meeting_info.date || ''}</Td>
-                <Td>{item.meeting_info.session || ''}</Td>
-                <Td>{item.meeting_info.decision || ''}</Td>
-                <Td>{item.article_html ? <Button onClick={() => showArticle(item.article_html)}>Show Article</Button> : ''}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
+        
+        <Accordion allowToggle>
+          {filteredData.reverse().map((item, index) => (
+            <AccordionItem key={index}>
+              <h2>
+                <AccordionButton>
+                  <Box flex="1" textAlign="left">
+                    <Stack direction='row'>
+                        <Badge colorScheme='green'>{item.meeting_info.decision}</Badge>
+                        <Badge colorScheme='red'>{item.meeting_info.meeting_type}</Badge>
+                        <Badge colorScheme='purple'>{item.meeting_info.session}</Badge>
+                    </Stack>
+                    <Stat>
+                        <StatNumber>{item.headline}</StatNumber>
+                        <StatHelpText>{item.meeting_info.date}</StatHelpText>
+                    </Stat>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                <Button href={item.url} target="_blank" rel="noopener noreferrer" colorScheme='teal' variant='outline'>
+                    Zur Seite
+                </Button>
+                <div dangerouslySetInnerHTML={{ __html: item.article_html }} />
+              </AccordionPanel>
+
+            </AccordionItem>
+          ))}
+        </Accordion>
       </Box>
     </Container>
   );

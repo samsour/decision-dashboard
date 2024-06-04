@@ -1,3 +1,4 @@
+/* Base styling for the HTML content */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -10,16 +11,19 @@ body {
   box-sizing: border-box;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+
+
+article h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
+article h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
 }
 
-th {
-  background-color: #f4f4f4;
+article p {
+  margin-bottom: 10px;
 }
