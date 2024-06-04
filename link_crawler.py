@@ -1,37 +1,64 @@
 import requests
 from bs4 import BeautifulSoup
 
-def check_link(url):
+def check_link_and_get_h1(url):
     try:
-        response = requests.head(url, allow_redirects=True)
-        return response.status_code == 200
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            h1_tag = soup.find('h1')
+            if h1_tag:
+                return h1_tag.text.strip()
+        return None
     except requests.RequestException as e:
         print(f"Error checking {url}: {e}")
-        return False
+        return None
 
-def crawl_links(base_url, years, numbers):
+def crawl_links(base_url, start_year, max_year, max_number):
     available_links = []
-    for year in years:
-        for number in numbers:
-            url = f"{base_url}{year}-{number}"
-            if check_link(url):
-                print(f"Available: {url}")
-                available_links.append(url)
+    consecutive_years_not_found = 0
+
+    for year in range(start_year, max_year + 1):
+        year_found = False
+        consecutive_not_found = 0
+
+        for number in range(1, max_number + 1):
+            url = f"{base_url}{year}-{str(number).zfill(2)}"
+            h1_content = check_link_and_get_h1(url)
+            if h1_content:
+                print(f"Available: {url} - {h1_content}")
+                available_links.append((url, h1_content))
+                consecutive_not_found = 0
+                year_found = True
             else:
-                print(f"Not available: {url}")
+                print(f"Not available or no <h1> found: {url}")
+                consecutive_not_found += 1
+                if consecutive_not_found >= 3:
+                    print(f"Skipping to next year after {consecutive_not_found} consecutive misses.")
+                    break
+
+        if not year_found:
+            consecutive_years_not_found += 1
+            if consecutive_years_not_found >= 3:
+                print(f"Stopping crawl after {consecutive_years_not_found} consecutive years with no entries.")
+                break
+        else:
+            consecutive_years_not_found = 0
+
     return available_links
 
 def save_links_to_file(links, filename):
     with open(filename, 'w') as file:
-        for link in links:
-            file.write(link + '\n')
+        for link, h1_content in links:
+            file.write(f"{link} - {h1_content}\n")
 
 if __name__ == "__main__":
     base_url = 'https://www.it-planungsrat.de/beschluss/beschluss-'
-    years = range(2020, 2024)  # Beispieljahre von 2020 bis 2023
-    numbers = range(1, 101)  # Beispielnummern von 1 bis 100
+    start_year = 2010  # Startjahr
+    max_year = 2030  # Endjahr (falls nicht früher gestoppt)
+    max_number = 100  # Maximal mögliche Nummer
 
-    available_links = crawl_links(base_url, years, numbers)
+    available_links = crawl_links(base_url, start_year, max_year, max_number)
     save_links_to_file(available_links, 'available_links.txt')
 
-    print("Done. Available links are saved in 'available_links.txt'")
+    print("Done. Available links with <h1> content are saved in 'available_links.txt'")
