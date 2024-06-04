@@ -36,6 +36,11 @@
             <tr>
                 <th>Link</th>
                 <th>Headline</th>
+                <th>Meeting Type</th>
+                <th>Date</th>
+                <th>Session</th>
+                <th>Decision</th>
+                <th>Article</th>
             </tr>
         </thead>
         <tbody>
@@ -54,8 +59,13 @@
                         row.innerHTML = `
                             <td><a href="${item.url}" target="_blank">${item.url}</a></td>
                             <td>${item.headline}</td>
+                            <td>${item.meeting_info.meeting_type || ''}</td>
+                            <td>${item.meeting_info.date || ''}</td>
+                            <td>${item.meeting_info.session || ''}</td>
+                            <td>${item.meeting_info.decision || ''}</td>
+                            <td>${item.article_html ? '<button onclick="showArticle(this)">Show Article</button>' : ''}</td>
                         `;
-                        tableBody.appendChild(row);
+                        tableBody.prepend(row);
                     });
                 });
         });
@@ -73,6 +83,14 @@
                 });
                 row.style.display = match ? '' : 'none';
             });
+        }
+
+        function showArticle(button) {
+            const row = button.closest('tr');
+            const articleHtml = row.querySelector('td:nth-child(7)').innerHTML;
+            const articleWindow = window.open('', '_blank');
+            articleWindow.document.write(articleHtml);
+            articleWindow.document.close();
         }
     </script>
 </body>

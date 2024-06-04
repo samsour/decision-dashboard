@@ -2,18 +2,36 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-def check_link_and_get_h1(url):
+def check_link_and_get_content(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
             h1_tag = soup.find('h1')
-            if h1_tag:
-                return h1_tag.text.strip()
-        return None
+            h4_tag = soup.find('h4')
+            article_tag = soup.find('article')
+            if h1_tag and article_tag:
+                h1_content = h1_tag.text.strip()
+                h4_content = h4_tag.text.strip() if h4_tag else None
+                article_html = str(article_tag)
+                
+                # Split the h4 content into meaningful parts
+                meeting_info = {}
+                if h4_content:
+                    parts = h4_content.split('|')
+                    if len(parts) == 4:
+                        meeting_info = {
+                            "meeting_type": parts[0].strip(),
+                            "date": parts[1].strip(),
+                            "session": parts[2].strip(),
+                            "decision": parts[3].strip()
+                        }
+
+                return h1_content, meeting_info, article_html
+        return None, None, None
     except requests.RequestException as e:
         print(f"Error checking {url}: {e}")
-        return None
+        return None, None, None
 
 def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_start_year):
     available_links = []
@@ -28,10 +46,15 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
         for number in range(1, max_number + 1):
             # Check the main URL
             url = f"{base_url}{year}-{str(number).zfill(2)}"
-            h1_content = check_link_and_get_h1(url)
+            h1_content, meeting_info, article_html = check_link_and_get_content(url)
             if h1_content:
                 print(f"Available: {url} - {h1_content}")
-                available_links.append({"url": url, "headline": h1_content})
+                available_links.append({
+                    "url": url,
+                    "headline": h1_content,
+                    "meeting_info": meeting_info,
+                    "article_html": article_html
+                })
                 consecutive_not_found = 0
                 year_found = True
             else:
@@ -47,10 +70,15 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
                 al_found = False
                 for suffix in al_suffixes:
                     al_url = f"{base_url}{year}-{str(number).zfill(2)}-{suffix}"
-                    al_h1_content = check_link_and_get_h1(al_url)
+                    al_h1_content, al_meeting_info, al_article_html = check_link_and_get_content(al_url)
                     if al_h1_content:
                         print(f"Available: {al_url} - {al_h1_content}")
-                        available_links.append({"url": al_url, "headline": al_h1_content})
+                        available_links.append({
+                            "url": al_url,
+                            "headline": al_h1_content,
+                            "meeting_info": al_meeting_info,
+                            "article_html": al_article_html
+                        })
                         consecutive_al_not_found = 0
                         year_found = True
                         al_found = True
@@ -92,4 +120,3 @@ if __name__ == "__main__":
     save_links_to_file(available_links, 'available_links.json')
 
     print("Done. Available links with <h1> content are saved in 'available_links.json'")
-scraper
