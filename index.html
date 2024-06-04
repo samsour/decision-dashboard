@@ -3,45 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Crawler</title>
+    <title>Beschlüsse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #filter {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-    <h1>Verfügbare Links</h1>
-    <ul id="linkList"></ul>
+    <h1>Verfügbare Beschlüsse</h1>
+    <input type="text" id="filter" placeholder="Filter" onkeyup="filterTable()">
+    <table id="beschluesseTable">
+        <thead>
+            <tr>
+                <th>Link</th>
+                <th>Headline</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamischer Inhalt -->
+        </tbody>
+    </table>
 
     <script>
-        async function checkLink(url) {
-            try {
-                let response = await fetch(url, { method: 'HEAD' });
-                return response.ok;
-            } catch (error) {
-                console.error(`Fehler beim Abrufen von ${url}:`, error);
-                return false;
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('available_links.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const tableBody = document.querySelector('#beschluesseTable tbody');
+                    const lines = data.split('\n');
+                    lines.forEach(line => {
+                        if (line.trim()) {
+                            const [link, headline] = line.split(' - ');
+                            const row = document.createElement('tr');
+                            const linkCell = document.createElement('td');
+                            const headlineCell = document.createElement('td');
 
-        async function crawlLinks() {
-            const baseURL = 'https://www.it-planungsrat.de/beschluss/beschluss-';
-            const years = [2020, 2021, 2022, 2023, 2024]; // Beispieljahre, kann erweitert werden
-            const numbers = Array.from({ length: 60 }, (_, i) => i + 1); // Beispielnummern 1-100
+                            const linkElement = document.createElement('a');
+                            linkElement.href = link;
+                            linkElement.textContent = link;
+                            linkElement.target = '_blank';
 
-            const linkList = document.getElementById('linkList');
-            for (let year of years) {
-                for (let number of numbers) {
-                    let url = `${baseURL}${year}-${number}`;
-                    if (await checkLink(url)) {
-                        let listItem = document.createElement('li');
-                        let link = document.createElement('a');
-                        link.href = url;
-                        link.textContent = url;
-                        listItem.appendChild(link);
-                        linkList.appendChild(listItem);
-                    }
+                            linkCell.appendChild(linkElement);
+                            headlineCell.textContent = headline;
+
+                            row.appendChild(linkCell);
+                            row.appendChild(headlineCell);
+
+                            tableBody.appendChild(row);
+                        }
+                    });
+                });
+        });
+
+        function filterTable() {
+            const filter = document.getElementById('filter').value.toLowerCase();
+            const rows = document.querySelectorAll('#beschluesseTable tbody tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const link = cells[0].textContent.toLowerCase();
+                const headline = cells[1].textContent.toLowerCase();
+                if (link.includes(filter) || headline.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
-            }
+            });
         }
-
-        crawlLinks();
     </script>
 </body>
 </html>
