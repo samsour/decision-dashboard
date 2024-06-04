@@ -1,4 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Input,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react';
 import './App.css';
 
 function App() {
@@ -33,42 +46,45 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Verfügbare Beschlüsse</h1>
-      <input
+    <Container maxW="container.xl" py={4}>
+      <Heading as="h1" mb={4}>Verfügbare Beschlüsse</Heading>
+      <Input
         type="text"
         id="filter"
         placeholder="Filter"
         value={filter}
         onChange={handleFilterChange}
+        mb={4}
       />
-      <table id="beschluesseTable">
-        <thead>
-          <tr>
-            <th>Link</th>
-            <th>Headline</th>
-            <th>Meeting Type</th>
-            <th>Date</th>
-            <th>Session</th>
-            <th>Decision</th>
-            <th>Article</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.map((item, index) => (
-            <tr key={index}>
-              <td><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></td>
-              <td>{item.headline}</td>
-              <td>{item.meeting_info.meeting_type || ''}</td>
-              <td>{item.meeting_info.date || ''}</td>
-              <td>{item.meeting_info.session || ''}</td>
-              <td>{item.meeting_info.decision || ''}</td>
-              <td>{item.article_html ? <button onClick={() => showArticle(item.article_html)}>Show Article</button> : ''}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <Box overflowX="auto">
+        <Table variant="striped" colorScheme="teal">
+          <Thead>
+            <Tr>
+              <Th>Link</Th>
+              <Th>Headline</Th>
+              <Th>Meeting Type</Th>
+              <Th>Date</Th>
+              <Th>Session</Th>
+              <Th>Decision</Th>
+              <Th>Article</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {filteredData.reverse().map((item, index) => (
+              <Tr key={index}>
+                <Td><a href={item.url} target="_blank" rel="noopener noreferrer">{item.url}</a></Td>
+                <Td>{item.headline}</Td>
+                <Td>{item.meeting_info.meeting_type || ''}</Td>
+                <Td>{item.meeting_info.date || ''}</Td>
+                <Td>{item.meeting_info.session || ''}</Td>
+                <Td>{item.meeting_info.decision || ''}</Td>
+                <Td>{item.article_html ? <Button onClick={() => showArticle(item.article_html)}>Show Article</Button> : ''}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
+    </Container>
   );
 }
 
