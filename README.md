@@ -21,38 +21,6 @@ This repository contains a Python-based web scraping tool designed to extract de
 ## How to Use
 
 1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/yourusername/decision-scraper.git
-   ```
-
-
-Certainly! Here is the content for a README.md file:
-
-markdown
-
-# Decision Scraper
-
-This repository contains a Python-based web scraping tool designed to extract decision links and their headlines from the IT-Planungsrat website. The scraped data is stored in a JSON file and displayed on a web page with filtering capabilities. This project is useful for gathering and analyzing decision information efficiently.
-
-## Key Features
-
-- Scrapes decision links and headlines from specified URLs.
-- Supports additional suffixes like `-al` and `-al-runde`.
-- Stores the extracted data in a structured JSON file.
-- Provides a web interface to view and filter the data.
-- Handles consecutive misses to optimize the scraping process.
-
-## Technologies Used
-
-- Python
-- BeautifulSoup (for web scraping)
-- JSON (for data storage)
-- HTML, CSS, JavaScript (for web interface)
-- Python's HTTP server (for local development)
-
-## How to Use
-
-1. **Clone the repository:**
 ```sh
 git clone https://github.com/yourusername/decision-scraper.git
 ```
