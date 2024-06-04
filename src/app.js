@@ -5,17 +5,16 @@ import {
   Heading,
   Input,
   VStack,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-    Stat,
-    Button,
+  Stat,
+  Link,
   StatNumber,
   StatHelpText,
-Badge,
-  Stack
+  Badge,
+  Stack,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import './App.css';
@@ -52,13 +51,14 @@ function App() {
 
   return (
     <Container maxW="container.xl" py={4}>
-      <Heading as="h1" mb={4}>Verfügbare Beschlüsse</Heading>
+      <Heading as="h1" mb={4}>Verfügbare Beschlüsse ({filteredData.length})</Heading>
       <VStack spacing={4} align="stretch" mb={4}>
         <Box>
           <Input
+            placeholder='Suchen'
+            size='lg'
             type="text"
             id="filter"
-            placeholder="Suchen"
             onChange={handleFilterChange}
             fontSize="2xl"
             p={4}
@@ -66,38 +66,26 @@ function App() {
         </Box>
       </VStack>
 
-
       <Box overflowX="auto">
-        
-        <Accordion allowToggle>
+        <Stack spacing={4}>
           {filteredData.reverse().map((item, index) => (
-            <AccordionItem key={index}>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    <Stack direction='row'>
-                        <Badge colorScheme='green'>{item.meeting_info.decision}</Badge>
-                        <Badge colorScheme='red'>{item.meeting_info.meeting_type}</Badge>
-                        <Badge colorScheme='purple'>{item.meeting_info.session}</Badge>
-                    </Stack>
-                    <Stat>
-                        <StatNumber>{item.headline}</StatNumber>
-                        <StatHelpText>{item.meeting_info.date}</StatHelpText>
-                    </Stat>
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                <Button href={item.url} target="_blank" rel="noopener noreferrer" colorScheme='teal' variant='outline'>
-                    Zur Seite
-                </Button>
-                <div dangerouslySetInnerHTML={{ __html: item.article_html }} />
-              </AccordionPanel>
-
-            </AccordionItem>
+            <Link href={item.url} target="_blank" rel="noopener noreferrer" colorScheme='teal' variant='outline'>
+              <Card key={index}>
+                <CardHeader>
+                  <Stack direction='row'>
+                    <Badge colorScheme='green'>{item.meeting_info.decision}</Badge>
+                    <Badge colorScheme='red'>{item.meeting_info.meeting_type}</Badge>
+                    <Badge colorScheme='purple'>{item.meeting_info.session}</Badge>
+                  </Stack>
+                  <Stat>
+                    <StatNumber>{item.headline}</StatNumber>
+                    <StatHelpText>{item.meeting_info.date}</StatHelpText>
+                  </Stat>
+                </CardHeader>
+              </Card>
+            </Link>
           ))}
-        </Accordion>
+        </Stack>
       </Box>
     </Container>
   );
