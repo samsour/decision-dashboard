@@ -48,7 +48,7 @@ def crawl_links(base_url, start_year, max_year, max_number):
     return available_links
 
 def save_links_to_file(links, filename):
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding='utf-8') as file:
         for link, h1_content in links:
             file.write(f"{link} - {h1_content}\n")
 
