@@ -575,6 +575,7 @@ https://www.it-planungsrat.de/beschluss/beschluss-2022-02-al - EfA-Mindestanford
 https://www.it-planungsrat.de/beschluss/beschluss-2022-03 - Managementkonzept zur flächendeckenden Förderung mit föderale IT-Infrastruktur
 https://www.it-planungsrat.de/beschluss/beschluss-2022-03-al - Entscheidung über Projektanträge-Digitalisierungsbudget
 https://www.it-planungsrat.de/beschluss/beschluss-2022-04 - Zentrales Bürgerpostfach
+https://www.it-planungsrat.de/beschluss/beschluss-2022-04-al-runde - Digitalisierungsbudget
 https://www.it-planungsrat.de/beschluss/beschluss-2022-05 - Behördennummer 115
 https://www.it-planungsrat.de/beschluss/beschluss-2022-06 - Registermodernisierung
 https://www.it-planungsrat.de/beschluss/beschluss-2022-07 - Unternehmenskonto
