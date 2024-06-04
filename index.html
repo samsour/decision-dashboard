@@ -11,6 +11,9 @@
         }
         #filter {
             margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         table {
             width: 100%;
@@ -42,31 +45,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            fetch('available_links.txt')
-                .then(response => response.text())
+            fetch('available_links.json')
+                .then(response => response.json())
                 .then(data => {
                     const tableBody = document.querySelector('#beschluesseTable tbody');
-                    const lines = data.split('\n');
-                    lines.forEach(line => {
-                        if (line.trim()) {
-                            const [link, headline] = line.split(' - ');
-                            const row = document.createElement('tr');
-                            const linkCell = document.createElement('td');
-                            const headlineCell = document.createElement('td');
-
-                            const linkElement = document.createElement('a');
-                            linkElement.href = link;
-                            linkElement.textContent = link;
-                            linkElement.target = '_blank';
-
-                            linkCell.appendChild(linkElement);
-                            headlineCell.textContent = headline;
-
-                            row.appendChild(linkCell);
-                            row.appendChild(headlineCell);
-
-                            tableBody.appendChild(row);
-                        }
+                    data.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><a href="${item.url}" target="_blank">${item.url}</a></td>
+                            <td>${item.headline}</td>
+                        `;
+                        tableBody.appendChild(row);
                     });
                 });
         });
@@ -76,13 +65,13 @@
             const rows = document.querySelectorAll('#beschluesseTable tbody tr');
             rows.forEach(row => {
                 const cells = row.querySelectorAll('td');
-                const link = cells[0].textContent.toLowerCase();
-                const headline = cells[1].textContent.toLowerCase();
-                if (link.includes(filter) || headline.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                let match = false;
+                cells.forEach(cell => {
+                    if (cell.textContent.toLowerCase().includes(filter)) {
+                        match = true;
+                    }
+                });
+                row.style.display = match ? '' : 'none';
             });
         }
     </script>

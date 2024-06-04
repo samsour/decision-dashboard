@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 def check_link_and_get_h1(url):
     try:
@@ -30,7 +31,7 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
             h1_content = check_link_and_get_h1(url)
             if h1_content:
                 print(f"Available: {url} - {h1_content}")
-                available_links.append((url, h1_content))
+                available_links.append({"url": url, "headline": h1_content})
                 consecutive_not_found = 0
                 year_found = True
             else:
@@ -49,7 +50,7 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
                     al_h1_content = check_link_and_get_h1(al_url)
                     if al_h1_content:
                         print(f"Available: {al_url} - {al_h1_content}")
-                        available_links.append((al_url, al_h1_content))
+                        available_links.append({"url": al_url, "headline": al_h1_content})
                         consecutive_al_not_found = 0
                         year_found = True
                         al_found = True
@@ -77,8 +78,7 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
 
 def save_links_to_file(links, filename):
     with open(filename, 'w', encoding='utf-8') as file:
-        for link, h1_content in links:
-            file.write(f"{link} - {h1_content}\n")
+        json.dump(links, file, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     base_url = 'https://www.it-planungsrat.de/beschluss/beschluss-'
@@ -89,6 +89,6 @@ if __name__ == "__main__":
     al_start_year = 2020
 
     available_links = crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_start_year)
-    save_links_to_file(available_links, 'available_links.txt')
+    save_links_to_file(available_links, 'available_links.json')
 
-    print("Done. Available links with <h1> content are saved in 'available_links.txt'")
+    print("Done. Available links with <h1> content are saved in 'available_links.json'")
