@@ -2,6 +2,8 @@
 
 This repository contains a Python-based web scraping tool designed to extract decision links and their headlines from the IT-Planungsrat website. The scraped data is stored in a JSON file and displayed on a web page with filtering capabilities. This project is useful for gathering and analyzing decision information efficiently.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/beb15d4b-2907-4950-b36a-ffb0e7f0cfc5/deploy-status)](https://app.netlify.com/sites/it-plr-scraper/deploys)
+
 ## Key Features
 
 - Scrapes decision links and headlines from specified URLs.
