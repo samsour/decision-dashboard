@@ -22,7 +22,7 @@ This repository contains a Python-based web scraping tool designed to extract de
 
 1. **Clone the repository:**
 ```sh
-git clone https://github.com/yourusername/decision-scraper.git
+git clone https://github.com/samsour/it-plr-decision-scraper.git
 ```
 
 2. **Navigate into the project directory:**
@@ -42,17 +42,14 @@ python scraper.py
 
 5. **Start the local server:**
 ```sh
-python -m http.server 8000
+npm i
+
+npm run start
 ```
 
 6. **Open your web browser and navigate to:**
 ```
-http://localhost:8000
-```
-
-7. **x:**
-```sh
-git clone https://github.com/yourusername/decision-scraper.git
+http://localhost:9000
 ```
 
 ## Example HTML Content of a Page
@@ -83,3 +80,7 @@ git clone https://github.com/yourusername/decision-scraper.git
     </span>
 </article>
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

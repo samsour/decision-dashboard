@@ -13,10 +13,13 @@ import {
   Stack,
   Card,
   CardHeader,
-  Spinner
+  Spinner,
+  Image,
+  Flex,
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import './App.css';
+import githubLogo from './assets/GitHub_Logo.png'; // import your GitHub logo
 
 function App() {
   const [data, setData] = useState([]);
@@ -54,7 +57,13 @@ function App() {
 
   return (
     <Container maxW="container.xl" py={4}>
-      <Heading as="h1" mb={4}>Verfügbare Beschlüsse ({filteredData.length})</Heading>
+      <Flex direction="row" justify="space-between" align="center">
+        <Heading as="h1" mb={4}>Verfügbare Beschlüsse ({filteredData.length})</Heading>
+        <Link href="https://github.com/samsour/it-plr-decision-scraper" isExternal>
+          <Image src={githubLogo} alt="GitHub Logo" boxSize="100" objectFit='contain' />
+        </Link>
+      </Flex>
+
       <VStack spacing={4} align="stretch" mb={4}>
         <Box>
           <Input
