@@ -49,7 +49,7 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
             h1_content, meeting_info, article_html = check_link_and_get_content(url)
             if h1_content:
                 print(f"Available: {url} - {h1_content}")
-                available_links.append({
+                available_links.insert(0, {  # Insert at the beginning
                     "url": url,
                     "headline": h1_content,
                     "meeting_info": meeting_info,
@@ -73,7 +73,7 @@ def crawl_links(base_url, start_year, max_year, max_number, al_suffixes, al_star
                     al_h1_content, al_meeting_info, al_article_html = check_link_and_get_content(al_url)
                     if al_h1_content:
                         print(f"Available: {al_url} - {al_h1_content}")
-                        available_links.append({
+                        available_links.insert(0, {  # Insert at the beginning
                             "url": al_url,
                             "headline": al_h1_content,
                             "meeting_info": al_meeting_info,
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     base_url = 'https://www.it-planungsrat.de/beschluss/beschluss-'
     start_year = 2010  # Startjahr
     max_year = 2030  # Endjahr (falls nicht früher gestoppt)
-    max_number = 100  # Maximal mögliche Nummer
+    max_number = 10  # Maximal mögliche Nummer
     al_suffixes = ['al', 'al-runde']  # Suffixe für zusätzliche Links
     al_start_year = 2020
 
