@@ -1,0 +1,29 @@
+/* Base styling for the HTML content */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+#filter {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+article h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+article h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+article p {
+  margin-bottom: 10px;
+}
