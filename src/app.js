@@ -18,7 +18,6 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import './App.css';
 import githubLogo from './assets/GitHub_Logo.png'; // import your GitHub logo
 
 function App() {
