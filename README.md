@@ -4,6 +4,8 @@ This repository contains a Python-based web scraping tool designed to extract de
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/beb15d4b-2907-4950-b36a-ffb0e7f0cfc5/deploy-status)](https://app.netlify.com/sites/it-plr-scraper/deploys)
 
+[IT PLR Scraper Online](https://it-plr-scraper.netlify.app/)
+
 ## Key Features
 
 - Scrapes decision links and headlines from specified URLs.
